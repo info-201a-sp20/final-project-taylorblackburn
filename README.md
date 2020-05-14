@@ -4,36 +4,72 @@
 
 - **Why are you interested in this field/domain?**
 
-While political and health updates surrounding COVID-19 might be overly saturated in today’s news articles and in social media, it is both interesting and pertinent to understand the growing pattern of how each state is handling the pandemic.In particular, we wish to explore a comparison of trends such as stay-at-home orders, the political party of each state’s respective governer, the reopening of public schools and businesses, and the requirement of wearing PPE, etc for each state. While each person might understand the regulations and orders of the state that he/she lives in, we noticed that there was limited sources for a complete dataset regarding the total changes in respect to economic, political, societal impacts of each state and we aim to create a well-rounded source for this information.
+While political and health updates surrounding COVID-19 might be overly saturated in today’s news articles and social media, it is both interesting and pertinent to understand the growing pattern of how each state is handling the pandemic and the resulting effects on various socioeconomic classes.
+In particular, we wish to explore the demographics of each state including statistics regarding healthcare facility capacity and type of lockdown. We aim to compare these demographics to the growing number of confirmed COVID-19 cases state-by-state in order to determine the correlation of the virus and its potential to disproportionately affect different populations. While each person might feel that they are up to date on national regulations and laws regarding COVID-19, we noticed that there were limited sources for a complete dataset regarding the total changes and possible implications in respect to economic, political, societal impacts of each state due to the coronavirus and we hope to create a well-rounded source for this information.
 
 - **What other examples of other data driven projects related to this domain?**
 
-  - 
+  - [Risk Perception Through the Lens of Politics in the Time of the COVID-19 Pandemic](https://bfi.uchicago.edu/wp-content/uploads/BFI_WP_202032.pdf)
+      - This article, published by the Becker Friedman Institute of Chicago found evidence that supports a correlation between the percentage of Trump supporters in a county with reduced social distancing. The datasets used included measures of internet searches, county-level average daily travel distance, and visits to non-essential businesses from a large sample of U.S. smartphones.
   
-  - 
+  
+  
+  - [Covid-Neighborhood-Job-Analysis](https://github.com/UrbanInstitute/covid-neighborhood-job-analysis)
+      - This project was created to help visualize how low-income jobs are being affected by COVID-19 around the United States. They hope to use this data to help get support from the government and other non-profit service providers to help low-income families who need resources, like food and child support.
 
-  -
+
+  - [Covid-19-Data](https://github.com/nytimes/covid-19-data)
+      - This project is using data from the New York Times to compile and keep records of the outbreak in the United States. By using the data, they hope to create a visualization to show what state is being affected most by COVID-19.
+
   
 - **What data-driven questions do you hope to answer about this domain?**
 
   - How does *political ideology* change response over time to social distancing measures?
   
-      - The Total Confirmed COVID-19 Cases dataset shows how 
+      - Compare political ideology across states
   
-  -
+  - In what ways has the virus disproportionately affected *low-income citizens and communities of color*?
   
-  -
+    - 
+  
+  - Is there a correlation between a *higher number of COVID-19 cases* and low-income states?
+  
+    - 
   
 ## COVID-19 Data
 
-#### Dataset 1: [Total Confirmed COVID-19 Cases](https://statisticaldatasets-data-planet-com.offcampus.lib.washington.edu/dataplanet/Datasets.html?id=25acd946-7e7d-49db-8f4b-169bd8a91cc3#D%7CXQAACAB6AAAAAAAAAAAAaAEBAYAwcb4FL63UO68r1lBP_0NM68nKp7hqnZNla_OCtZJWqERO8khtSvpjvEIPWP14Ui$TQ1zjMLAU2ROmC8prcoUd3$nm6794oL__8$EcAA==%7CXQAACABgAQAAAAAAAAAA4XFqWl9Kq3tg5rEuO4A9dXR0jJ7oxxXH4FW2X12YY9fXZjl4K1s8FwMN0RZC25JG9ayUKeXzP_5p79ieKrMgfGArb1Wtl9lptnND48jlI_eU_lbRlnBvrpceE8mNYROFS_T4BmNk8Tq7v6UZCUBb4Mc0niWUTInkWT75oriNQVON6uKTqCTbq1NUPf6z16OxRDnfkygOL9QB67jdz$Au616Jh0VOys4kr___Xfe5AA==)
+#### Dataset 1: [COVID-19 Cases State-By-State](https://github.com/nytimes/covid-19-data/blob/master/us-states.csv)
 
-  - The data is sourced from the European Centre for Disease Prevention and Control (ECDC). The statistics reported in Data Planet are drawn from daily data updates published by ECDC on COVID-19 confirmed cases and deaths caused by COVID-19.
+  - The population and demographic data is sourced from the Census Bureau and various state and local health agencies and hospitals.
   
-  - It reports a cumulative total of reported cases confirmed for COVID-19 internationally- up to the current date. 
+  - There are 3920 rows and 5 columns.
   
-  - There are rows and columns.
+  - The questions that can be answered with this dataset:
+  
+      - Is there a correlation between a higher number of COVID-19 cases and low-income states?
+      
+      - In what ways has the virus disproportionately affected low-income citizens and communities of color?
+      
+      - How does political ideology change response over time to social distancing measures?
+      
+#### Dataset 2: [Healthcare Facility Capacity Information by State](https://github.com/covidcaremap/covid19-healthsystemcapacity/blob/master/data/published/us_healthcare_capacity-state-CovidCareMap.csv)
+
+  - The data is sourced from CovidCareCap.com, comprised of a team of data scientists, engineers, designers, develops, communicators, and healthcare experts.
+  
+  - There are 52 rows and 23 columns.
   
   - The question that can be answered with this dataset:
+      
+      - Is there a correlation between a higher number of COVID-19 cases and low-income states?
+      
+      
+#### Dataset 3: [Type of Lockdown by State](https://www.kaggle.com/lin0li/us-lockdown-dates-dataset)
+
+  - The data is sourced from state and local governments, local news reports, and the Census Bureau.
   
-      - 
+  - There are 150 rows and 5 columns.
+  
+  - The question that can be answered with this dataset:
+      
+      - How does political ideology change response over time to social distancing measures?
+      
