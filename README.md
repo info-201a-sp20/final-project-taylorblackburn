@@ -24,17 +24,17 @@ In particular, we wish to explore the demographics of each state including stati
   
 - **What data-driven questions do you hope to answer about this domain?**
 
-  - How does *political ideology* change response over time to social distancing measures?
+  - How does *hospital capacity* of each state affect the degree of social distancing measures?
   
-      - Compare political ideology across states
+      - Using the *Healthcare Facility Capacity Information by State* data and the *Type of Lockdown by State* data, we can compare each state's hospital capacity to the type of lockdown that the respective state is experiencing.
   
   - In what ways has the virus disproportionately affected *low-income citizens and communities of color*?
   
-    - 
+    - Using the *COVID-19 Cases State-By-State* data, we can evaluate the number of confirmed COVID-19 cases by state and determine a correlation between different demographic groups, like income, ethnicity, or race using Census data. 
   
-  - Is there a correlation between a *higher number of COVID-19 cases* and low-income states?
+  - Does a *higher number of COVID-19 cases* actually predict the type of lockdown that  a state implements?
   
-    - 
+    - Using the *COVID-19 Cases State-By-State* data and the *Type of Lockdown by State* data, we can compare the number of confirmed coronavirus cases and the type of lockdown that each state implements or if the variation can be better explained by a different variable.  
   
 ## COVID-19 Data
 
@@ -46,21 +46,21 @@ In particular, we wish to explore the demographics of each state including stati
   
   - The questions that can be answered with this dataset:
   
-      - Is there a correlation between a higher number of COVID-19 cases and low-income states?
+      - How does hospital capacity of each state affect the degree of social distancing measures?
       
       - In what ways has the virus disproportionately affected low-income citizens and communities of color?
       
-      - How does political ideology change response over time to social distancing measures?
+      - Does a higher number of COVID-19 cases actually predict the type of lockdown that  a state implements?
       
 #### Dataset 2: [Healthcare Facility Capacity Information by State](https://github.com/covidcaremap/covid19-healthsystemcapacity/blob/master/data/published/us_healthcare_capacity-state-CovidCareMap.csv)
 
-  - The data is sourced from CovidCareCap.com, comprised of a team of data scientists, engineers, designers, develops, communicators, and healthcare experts.
+  - The data is sourced from the University of Washington IMHE Forecast, Harvard Global Health Institute Data, US Census data, etc.
   
   - There are 52 rows and 23 columns.
   
   - The question that can be answered with this dataset:
       
-      - Is there a correlation between a higher number of COVID-19 cases and low-income states?
+      - How does hospital capacity of each state affect the degree of social distancing measures?
       
       
 #### Dataset 3: [Type of Lockdown by State](https://www.kaggle.com/lin0li/us-lockdown-dates-dataset)
@@ -69,7 +69,9 @@ In particular, we wish to explore the demographics of each state including stati
   
   - There are 150 rows and 5 columns.
   
-  - The question that can be answered with this dataset:
+  - The questions that can be answered with this dataset:
       
-      - How does political ideology change response over time to social distancing measures?
+      - How does hospital capacity of each state affect the degree of social distancing measures?
+      
+      - Does a higher number of COVID-19 cases actually predict the type of lockdown that  a state implements?
       
