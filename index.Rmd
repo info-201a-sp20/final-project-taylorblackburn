@@ -1,11 +1,14 @@
----
-title: "Midpoint Project"
-author: "Danny Truong"
-date: "5/21/2020"
-output: html_document
----
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+source("scripts/table_summary_info.R")
 ```
+# Summary Information
+Covid is bad
 
+# Summary Table
+table
+
+# Chart 1
+
+# Chart 2
+
+# Chart 3
