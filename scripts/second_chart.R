@@ -1,35 +1,33 @@
 library(dplyr)
 library(ggplot2)
-
+rm(list=ls())
 # Loading our data
-lockdown <- read.csv("../data/lockdown_us.csv", stringsAsFactors = FALSE)
+healthcare_capacity <- read.csv("../data/us_healthcare_capacity.csv", stringsAsFactors = FALSE)
 case_states <- read.csv("../data/us-states.csv", stringsAsFactors = FALSE)
 
 # Filter out unnecessary information from both data
-filtered_lockdown <- lockdown %>% 
-  select(State, Date, Type) %>% 
-  rename(state = "State")
+filtered_healthcare_capacity <- healthcare_capacity %>% 
+  select(State.Name, Staffed.All.Beds) %>%
+  rename(state = State.Name)
 
 filtered_case_states <- case_states %>% 
   select(state, date, cases)
 
-# In filtered_lockdown, filter out the most recent date for each state
-recent_date_lockdown <- filtered_lockdown %>% 
+# In filtered_case_states, filter out the most recent date to get the total number of cases for each state
+total_cases_states <- filtered_case_states %>% 
   group_by(state) %>% 
-  summarise(date = max(Date), type = max(Type))
-
-# For me, to organize the data by their state
-organized_states <- filtered_case_states %>% 
-  group_by(state, date, cases) %>% 
-  summarise()
+  filter(state != "Puerto Rico") %>%
+  filter(state != "Guam") %>%
+  filter(state != "Northern Mariana Islands") %>% 
+  filter(state !="Virgin Islands") %>%
+  summarise(date = max(date), cases = max(cases))
 
 # Merge both data into one, trying to match their date
-merged_data <- recent_date_lockdown %>% 
-  left_join(organized_states) %>% 
-  filter(state != "Puerto Rico")
-
+merged_data <- filtered_healthcare_capacity %>% 
+  left_join(total_cases_states)
+  
 # Plot for merged_data
-case_state_plot <- ggplot(data = merged_data) +
-  geom_col(mapping = aes(x = state, y = cases, fill = type)) +
-  ggtitle("Correlation Between Number of Cases and Type of Lockdown ") +
-  coord_flip()
+case_beds_plot <- ggplot(merged_data, aes(x = state)) +
+  geom_col(aes(y=cases)) +
+  geom_point(aes(y=Staffed.All.Beds), color = "blue")
+
