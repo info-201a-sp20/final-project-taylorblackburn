@@ -1,9 +1,11 @@
 library(dplyr)
 
 # Loading our data
-healthcare_capacity <- read.csv("../data/us_healthcare_capacity.csv", stringsAsFactors = FALSE)
+healthcare_capacity <- read.csv("../data/us_healthcare_capacity.csv",
+                                stringsAsFactors = FALSE)
 case_states <- read.csv("../data/us-states.csv", stringsAsFactors = FALSE)
-political_party <- read.csv("../data/governors_political_party_id.csv", stringsAsFactors = FALSE)
+political_party <- read.csv("../data/governors_political_party_id.csv",
+                            stringsAsFactors = FALSE)
 lockdowns <- read.csv("../data/lockdown_us.csv", stringsAsFactors = FALSE)
 
 # 1. State with the largest total number of cases
@@ -54,5 +56,3 @@ ny_lockdown <- lockdowns %>%
 ny_lockdown <- lockdowns %>%
   filter(State == "New York") %>%
   pull(Date)
-
-rm(list=ls())
