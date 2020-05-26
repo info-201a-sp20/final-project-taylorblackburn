@@ -1,16 +1,24 @@
-library(dplyr)
+#SECOND CHART
+#timeline bar chart: bechdel test results vs. decades
+
+#load necessary libraries
 library(ggplot2)
+library(dplyr)
 
-# Loading our data
-healthcare_capacity <- read.csv("../data/us_healthcare_capacity.csv",
-                                stringsAsFactors = FALSE)
-case_states <- read.csv("../data/us-states.csv", stringsAsFactors = FALSE)
+#load csv
+bechdel <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
 
-# Filter out unnecessary information from both data
-filtered_healthcare_capacity <- healthcare_capacity %>%
-  select(State.Name, Staffed.All.Beds) %>%
-  rename(state = State.Name)
+#create dataframe for necessary columns and group by decade
+bechdel_df <- bechdel %>%
+  select(rating, year) %>% 
+  mutate(decade = floor(year/10)*10) %>%
+  filter(decade >= 1900) %>% 
+  group_by(decade) %>% 
+  summarize(
+    rating_avg = round(mean(rating), 0)
+  )
 
+<<<<<<< HEAD
 filtered_deaths_states <- case_states %>%
   select(state, date, deaths)
 
@@ -46,3 +54,21 @@ deaths_beds_plot <- ggplot(merged_data, aes(x = state)) +
   ggtitle("Correlation between Number of Available Hospital Beds and Number of Deaths due to COVID-19") +
   xlab("State") +
   ylab("Number")
+=======
+#create bar chart
+decades_chart <- ggplot(data = bechdel_df) +
+  geom_col(mapping = aes(x = decade, y = rating_avg), 
+           fill = "cornflowerblue",
+           color = "black") +
+  scale_x_continuous(breaks = bechdel_df$decade) +
+  labs(
+    title = "Bechdel Test Average Across Decades",
+    x = "Decade",
+    y = "Bechdel Test Rating"
+  ) +
+  theme(axis.text.x = element_text(angle = 90),
+        panel.border = element_blank(),
+        panel.grid.minor = element_blank())
+
+
+>>>>>>> fbba13be827e35db72217f4e2dec3806f876467c
