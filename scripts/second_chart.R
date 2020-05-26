@@ -15,7 +15,7 @@ bechdel_df <- bechdel %>%
   filter(decade >= 1900) %>% 
   group_by(decade) %>% 
   summarize(
-    rating_avg = round(mean(rating), 0),
+    rating_avg = round(mean(rating), 0)
   )
 
 #create bar chart
