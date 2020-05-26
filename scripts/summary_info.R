@@ -1,58 +1,90 @@
 library(dplyr)
 
 # Loading our data
-healthcare_capacity <- read.csv("../data/us_healthcare_capacity.csv",
-                                stringsAsFactors = FALSE)
-case_states <- read.csv("../data/us-states.csv", stringsAsFactors = FALSE)
-political_party <- read.csv("../data/governors_political_party_id.csv",
-                            stringsAsFactors = FALSE)
-lockdowns <- read.csv("../data/lockdown_us.csv", stringsAsFactors = FALSE)
+bechdel_rating <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
+bechdel_revenue <- read.csv("../data/Bechdel-master_revenue.csv", stringsAsFactors = FALSE)
 
-# 1. State with the largest total number of cases
-max_cases_state <- case_states %>%
-  filter(date == max(date)) %>%
-  filter(cases == max(cases)) %>%
-  pull(state)
+# Merging Data
+rating_select <- bechdel_rating %>%
+  select(title, rating)
 
-# 2. State with the lowest total number of cases
-min_cases_state <- case_states %>%
-  filter(date == min(date)) %>%
-  filter(cases == min(cases)) %>%
-  pull(state)
+revenue_select <- bechdel_revenue %>%
+  select(Movie, Revenue, Year, Genre)
 
-# 3. Number of states with Republican Governers
-republican <- political_party %>%
-  filter(Party == "Republican") %>%
-  nrow()
+merged_data <- left_join(revenue_select, rating_select, by = c("Movie" = "title"))
 
-# 4. Number of states with Democratic Governers
-democrat <- political_party %>%
-  filter(Party == "Democratic") %>%
-  nrow()
+bechdel_data <- merged_data %>%
+  filter(!is.na(rating))
 
-# 5. Example: New York w/ beds, political party, and lockdown type
-# Number of beds available in New York
-ny_max_beds <- healthcare_capacity %>%
-  filter(State.Name == "New York") %>%
-  pull(Staffed.All.Beds)
-
-# Average number of beds per state
-avg_beds <- mean(healthcare_capacity$Staffed.All.Beds)
-
-# Ratio of beds in New York compared to the average
-ny_beds_ratio <- ny_max_beds / avg_beds
-
-# New York governer political party
-ny_gov_party <- political_party %>%
-  filter(Office == "Governor of New York") %>%
-  pull(Party)
-
-# New York lockdown type
-ny_lockdown <- lockdowns %>%
-  filter(State == "New York") %>%
-  pull(Type)
+# 1. Time Frame: Dates of oldest and newest movie 
+oldest_year <- bechdel_data %>%
+  filter(Year == min(Year)) %>%
+  filter(rating == 3) %>%
+  pull(Year)
   
-# New York date lockdown enacted
-ny_lockdown <- lockdowns %>%
-  filter(State == "New York") %>%
-  pull(Date)
+newest_year <- bechdel_data %>%
+  filter(Year == max(Year)) %>%
+  filter(Movie == "Despicable Me 3") %>%
+  pull(Year)
+  
+# 2. Total number of movies in filtered and merged dataset
+total_movies <- bechdel_data %>%
+  nrow()
+
+# 3. Oldest movie that passes the Bechdel Test
+oldest_pass <- bechdel_rating %>%
+  filter(rating == 3) %>%
+  filter(year == min(year)) %>%
+  pull(title)
+
+# 4. Movie with the most revenue that passes the Bechdel Test
+most_revenue <- bechdel_data %>%
+  filter(rating == 3) %>%
+  filter(Revenue == max(Revenue)) %>%
+  pull(Movie)
+
+# 5. Most common movie genre that passes  the  Bechdel Test
+passed_test <- bechdel_data %>%
+  filter(rating == 3)
+
+genre_most_common <- tail(names(sort(table(passed_test$Genre))), 1)
+  
+unique_values <- function(df, column_name, remove_items_with_freq_equal_or_lower_than = 0, return_df = F, 
+                                           sort_desc = T, return_most_frequent_value = F)
+ {
+  temp <- df[column_name]
+  output <- as.data.frame(table(temp))
+  names(output) <- c("Item","Frequency")
+  output_df <- output[  output[[2]] > remove_items_with_freq_equal_or_lower_than,  ]
+  
+   if (sort_desc){
+    output_df <- output_df[order(output_df[[2]], decreasing = T), ]
+   }
+   
+   cat("\nThis is the (head) count of the unique values in dataframe column '", column_name,"':\n")
+  print(head(output_df))
+  
+   if (return_df){
+    return(output_df)
+   }
+  
+   if (return_most_frequent_value){
+    output_df$Item <- as.character(output_df$Item)
+    output_df$Frequency <- as.numeric(output_df$Frequency)
+    most_freq_item <- output_df[1, "Item"]
+    cat("\nReturning most frequent item: ", most_freq_item)
+    return(most_freq_item)
+   }
+}
+
+most_common_genre <- unique_values(passed_test, "Genre")
+
+genres <- unique_values(bechdel_data, "Genre")
+
+most <- most_common_genre  / genres
+
+After merging two datasets by a commonly shared movie title, we are analyzing this data from a total number of # 2 movies that date from # 1 to # 1, 
+We hope to determine the correlation between different variables (like the movie genre, the decade the movie was released, and the revenue generated from the movie) to the likelihood of that film passing the Bechdel Test.
+The oldest movie that passed the Bechdel Test was # 3 in  1899.
+The movie that generated the most revenue that passed the Bechdel Test was #4 in 1997.
+
