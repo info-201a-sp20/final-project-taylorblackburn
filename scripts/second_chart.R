@@ -15,14 +15,15 @@ bechdel_df <- bechdel %>%
   filter(decade >= 1900) %>% 
   group_by(decade) %>% 
   summarize(
-    rating_avg = round(mean(rating), 0)
+    rating_avg = round(mean(rating), 0),
   )
 
 #create bar chart
 decades_chart <- ggplot(data = bechdel_df) +
-  geom_col(mapping = aes(x = decade, y = rating_avg), 
-           fill = "cornflowerblue",
-           color = "black") +
+  geom_line(mapping = aes(x = decade, y = rating_avg), 
+           color = "cornflowerblue") +
+  geom_point(mapping = aes(x = decade, y = rating_avg), 
+             color = "cornflowerblue") +
   scale_x_continuous(breaks = bechdel_df$decade) +
   labs(
     title = "Bechdel Test Average Across Decades",
