@@ -33,5 +33,3 @@ decades_chart <- ggplot(data = bechdel_df) +
   theme(axis.text.x = element_text(angle = 90),
         panel.border = element_blank(),
         panel.grid.minor = element_blank())
-
-
