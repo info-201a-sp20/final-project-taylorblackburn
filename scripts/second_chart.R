@@ -1,33 +1,36 @@
-library(dplyr)
+#SECOND CHART
+#timeline bar chart: bechdel test results vs. decades
+
+#load necessary libraries
 library(ggplot2)
+library(dplyr)
 
-# Loading our data
-healthcare_capacity <- read.csv("../data/us_healthcare_capacity.csv",
-                                stringsAsFactors = FALSE)
-case_states <- read.csv("../data/us-states.csv", stringsAsFactors = FALSE)
+#load csv
+bechdel <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
 
-# Filter out unnecessary information from both data
-filtered_healthcare_capacity <- healthcare_capacity %>%
-  select(State.Name, Staffed.All.Beds) %>%
-  rename(state = State.Name)
+#create dataframe for necessary columns and group by decade
+bechdel_df <- bechdel %>%
+  select(rating, year) %>% 
+  mutate(decade = floor(year/10)*10) %>%
+  filter(decade >= 1900) %>% 
+  group_by(decade) %>% 
+  summarize(
+    rating_avg = round(mean(rating), 0)
+  )
 
-filtered_case_states <- case_states %>%
-  select(state, date, cases)
+#create bar chart
+decades_chart <- ggplot(data = bechdel_df) +
+  geom_col(mapping = aes(x = decade, y = rating_avg), 
+           fill = "cornflowerblue",
+           color = "black") +
+  scale_x_continuous(breaks = bechdel_df$decade) +
+  labs(
+    title = "Bechdel Test Average Across Decades",
+    x = "Decade",
+    y = "Bechdel Test Rating"
+  ) +
+  theme(axis.text.x = element_text(angle = 90),
+        panel.border = element_blank(),
+        panel.grid.minor = element_blank())
 
-# Filter the most recent date to get the total number of cases for each state
-total_cases_states <- filtered_case_states %>%
-  group_by(state) %>%
-  filter(state != "Puerto Rico") %>%
-  filter(state != "Guam") %>%
-  filter(state != "Northern Mariana Islands") %>%
-  filter(state != "Virgin Islands") %>%
-  summarise(date = max(date), cases = max(cases))
 
-# Merge both data into one, trying to match their date
-merged_data <- filtered_healthcare_capacity %>%
-  left_join(total_cases_states)
-  
-# Plot for merged_data
-case_beds_plot <- ggplot(merged_data, aes(x = state)) +
-  geom_col(aes(y = cases)) +
-  geom_point(aes(y = Staffed.All.Beds), color = "blue")
