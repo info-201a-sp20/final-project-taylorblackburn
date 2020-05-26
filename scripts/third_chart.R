@@ -1,27 +1,49 @@
 library(ggplot2)
 library(dplyr)
 
+# goal: Create plot that compares bechdel test rating to revenue of movies from 2000-2018
+
 # load datsets
-lockdown_date <- read.csv("../data/lockdown_us.csv", stringsAsFactors = FALSE)
-pol_party <- read.csv("../data/gov_political_party.csv", stringsAsFactors = FALSE)
+rev <- read.csv("../data/Bechdel-master_revenue.csv", stringsAsFactors = FALSE)
+bechdel <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
-# selecting relevant columns and rows
-# select state and party only 
-governors_party <- pol_party %>%
-  select(State, Party)
+# get rid of uneccessary columns
+rev_select <- rev %>%
+  select(Movie, Revenue, Year)
+  
+bechdel_select <- bechdel %>%
+  select(title, rating)
 
-# filter out orders other than "Stay at home", then get the
-# first date that the stay at home order was enacted in the state
-lockdown <- lockdown_date %>%
-  select(State, County, Date, Type) %>%
-  filter(Type == "Stay at home") %>%
-  group_by(State) %>%
-  summarise(Date = min(Date))
+# join tibbles
+joined_data <- left_join(rev_select, bechdel_select, by = c("Movie" = "title"))
 
-# join the two new dataframes
-gov_party_lockdown_date <- left_join(governors_party, lockdown)
+# filter out movies with no bechdel rating (na values), movies where revenue is equal to 0,
+# and filter out movies released before 2000 to account for inflation
+filtered_data <- joined_data %>%
+  filter(!is.na(rating)) %>%
+  filter(Revenue > 0) %>%
+  filter(Year > 1999)
 
-# chart
+# find average revenue of each rating (0-3)
+summary_values <- filtered_data %>%
+  group_by(rating) %>%
+  summarise(avg_revenue = mean(Revenue), max_rev = max(Revenue), min_rev = min(Revenue)) %>%
+  options(scipen = 10000)
 
-gov_party_plot <- ggplot(data = gov_party_lockdown_date) +
-  geom_point(mapping = aes(x = Date, y = Party, fill = type))
+# make plot
+rev_plot <- ggplot(data = summary_values) +
+  geom_bar(mapping = aes(x = rating, y = avg_revenue), position = stacking) +
+  ggtitle("Revenue of MBechdel Tested Movies") +
+  xlab("Rating") +
+  ylab("Revenue") +
+  scale_y_continuous()
+
+  ggplot( aes(x = rating, y = n, fill = name)) +
+  geom_bar(stat = "identity", width = 0.5) +
+  scale_fill_viridis(discrete = TRUE, name = "") +
+  theme_ipsum() +
+  ylab("Number of baby")
+  
+  
+
+  
