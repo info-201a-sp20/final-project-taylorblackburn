@@ -1,35 +1,54 @@
-library(dplyr)
 library(ggplot2)
+library(dplyr)
 
-# Loading our data
-lockdown <- read.csv("../data/lockdown_us.csv", stringsAsFactors = FALSE)
-case_states <- read.csv("../data/us-states.csv", stringsAsFactors = FALSE)
+#load csv
+bechdel <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
+revenue <- read.csv("../data/Bechdel-master_revenue.csv", stringsAsFactors = FALSE)
 
-# Filter out unnecessary information from both data
-filtered_lockdown <- lockdown %>% 
-  select(State, Date, Type) %>% 
-  rename(state = "State")
+# Focus on data from 2000 - 2018
+recent_bechdel <- bechdel %>% 
+  filter(!is.na(rating)) %>%
+  filter(year > 1999)
 
-filtered_case_states <- case_states %>% 
-  select(state, date, cases)
+recent_revenue <- revenue %>% 
+  filter(Year > 1999)
 
-# In filtered_lockdown, filter out the most recent date for each state
-recent_date_lockdown <- filtered_lockdown %>% 
-  group_by(state) %>% 
-  summarise(date = max(Date), type = max(Type))
+# Select important data from each list of data
+bechdel_movies <- recent_bechdel %>% 
+  select(title, rating)
 
-# For me, to organize the data by their state
-organized_states <- filtered_case_states %>% 
-  group_by(state, date, cases) %>% 
-  summarise()
+genre_movies <- recent_revenue %>% 
+  select(Movie, Genre) %>% 
+  rename(title = "Movie")
 
-# Merge both data into one, trying to match their date
-merged_data <- recent_date_lockdown %>% 
-  left_join(organized_states) %>% 
-  filter(state != "Puerto Rico")
+# Combine and get rid of missing data
+combined_movies <- bechdel_movies %>% 
+  left_join(genre_movies, by = "title") %>% 
+  filter(!is.na(Genre)) %>% 
+  filter(Genre != "")
 
-# Plot for merged_data
-case_state_plot <- ggplot(data = merged_data) +
-  geom_col(mapping = aes(x = state, y = cases, fill = type)) +
-  ggtitle("Correlation Between Number of Cases and Type of Lockdown ") +
-  coord_flip()
+# Average out the rating for each genre and get rid of concert/performance and Multiple Genres
+average_scale_genre <- combined_movies %>% 
+  group_by(Genre) %>% 
+  summarise(average_rating = mean(rating)) %>% 
+  filter(Genre != "Concert/Performance") %>% 
+  filter(Genre != "Multiple Genres")
+
+# Pie chart to compare genre and average ratings
+col_genre <- ggplot(average_scale_genre, aes(x = "", y = average_rating, fill = Genre)) +
+  geom_bar(width = 1, stat = "identity")
+
+pie_genre <- col_genre +
+  coord_polar("y", start = 0, direction = -1) +
+  scale_fill_manual(values = c("#da7900", "#667eea", "#0038ff",
+                               "#ffff00", "#d41a1a", "#06d61a", "#f05f8d",
+                               "#045845", "#6b6b6b", "#a97d64", "#FFC0CB")) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.border = element_blank(),
+        panel.grid=element_blank(),
+        axis.ticks = element_blank(),
+        plot.title=element_text(size=14, face="bold")) +
+  theme(axis.text.x = element_blank()) +
+  geom_text(aes(label = paste(round(average_rating, 2))), position = position_stack(vjust = 0.5)) + 
+  ggtitle("Different Movie Genres and Their Average Bechdel Rating")
