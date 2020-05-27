@@ -6,7 +6,7 @@ library(ggplot2)
 library(dplyr)
 
 #load csv
-bechdel <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
+bechdel <- read.csv("./data/bechdel_test_df.csv", stringsAsFactors = FALSE)
 
 #create dataframe for necessary columns and group by decade
 bechdel_df <- bechdel %>%
@@ -32,4 +32,7 @@ decades_chart <- ggplot(data = bechdel_df) +
   ) +
   theme(axis.text.x = element_text(angle = 90),
         panel.border = element_blank(),
-        panel.grid.minor = element_blank())
+        panel.grid.minor = element_blank()) +
+  theme(axis.text = element_text(size = 11)) +
+  theme(axis.title = element_text(size = 14)) +
+  theme(plot.title = element_text(size = 17))

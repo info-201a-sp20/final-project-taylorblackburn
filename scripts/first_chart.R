@@ -2,8 +2,8 @@ library(ggplot2)
 library(dplyr)
 
 # load csv
-bechdel <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
-revenue <- read.csv("../data/Bechdel-master_revenue.csv",
+bechdel <- read.csv("./data/bechdel_test_df.csv", stringsAsFactors = FALSE)
+revenue <- read.csv("./data/Bechdel-master_revenue.csv",
   stringsAsFactors = FALSE
 )
 
@@ -63,4 +63,7 @@ pie_genre <- col_genre +
   geom_text(aes(label = paste(round(average_rating, 2))),
     position = position_stack(vjust = 0.5)
   ) +
-  ggtitle("Different Movie Genres and Their Average Bechdel Rating")
+  ggtitle("Different Movie Genres and Their Average Bechdel Rating") +
+  theme(axis.text = element_text(size = 11)) +
+  theme(axis.title = element_text(size = 14)) +
+  theme(plot.title = element_text(size = 17))

@@ -5,9 +5,9 @@ library(dplyr)
 # movies from 2000-2018
 
 # load datsets
-rev <- read.csv("../data/Bechdel-master_revenue.csv",
+rev <- read.csv("./data/Bechdel-master_revenue.csv",
                 stringsAsFactors = FALSE)
-bechdel <- read.csv("../data/bechdel_test_df.csv",
+bechdel <- read.csv("./data/bechdel_test_df.csv",
                     stringsAsFactors = FALSE)
 
 # get rid of uneccessary columns

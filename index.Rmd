@@ -1,14 +1,55 @@
 ```{r setup, include=FALSE}
+source("scripts/first_chart.R")
+source("scripts/summary_info.R")
 source("scripts/table_summary_info.R")
+source("scripts/second_chart.R")
+source("scripts/third_chart.R")
 ```
-# Summary Information
-Covid is bad
 
-# Summary Table
-table
+# Testing the Bechdel Test
 
-# Chart 1
+## Introductory Paragraph
 
-# Chart 2
+Over the past few decades, there have been drastic changes in the media to represent various marginalized groups, including women, people of color, disabled individuals, and members of  the LBTQ+ community. In order to quantify these rising levels of representation, there have been different processes created to assess the diversity of fictional films. We aim to evaluate the effectiveness of one of the tools used to measure the character development of women, known as **The Bechdel Test**, which is commonly used in fiction movies. A movie “passes” by following these three criteria: **(1)** it has to have at least two women in it, who **(2)** talk to each other, about **(3)** something besides a man.
 
-# Chart 3
+This data was sourced from [thebechdeltest.com](https://bechdeltest.com/) and a [dataset](https://data.world/sharon/bechdel-test) published by Sharon Brener on Data.World.
+
+## Summary Information
+
+After merging two datasets by a commonly shared movie title, we are analyzing this data that has a **total number** of `r total_movies` movies that date from `r oldest_year` to `r newest_year`. We hope to determine the *correlation* between different variables in this merged dataset (like the movie genre, the decade the movie was released, and the revenue generated from the movie) to test the likelihood of that film passing the Bechdel Test.
+Some interesting facts gathered from our analysis thus far: The **oldest movie** that passed the Bechdel Test was `r oldest_pass` in 1899.
+Also, The movie that generated the **most revenue** that passed the Bechdel Test was `r most_revenue` in 1997. Finally,
+The **most common movie genre** that passed the Bechdel test was `r genre_most_common`.
+
+## Summary Table
+
+We decided to show only the first 6 movies due to a large dataset. We decided to group by the Movie Titles and include relevant columns that were later used in the three charts, including: revenue, year, genre, and Bechdel Test Rating.
+```{r echo = FALSE}
+library(knitr)
+kable(bechdel_data, caption = "Movies Assesed on the Bechdel Test")
+
+```
+
+## Chart 1
+
+```{r, echo = FALSE}
+pie_genre
+```
+
+This pie chart is used to help differentiate the different movie genres and their average bechdel rating. The larger the slice, the higher the average bechdel rating it has. We decided to include this chart so that we can see which movie genre is most likely to pass the bechdel test by comparing the numbers between each piece and their general sizes. We used movie information from as early as the year 2000 to the most recent year 2020. From this plot, we are able to see that musicals, romantic comedies, and horror movies are the few genres that are close to receiving an average of 3 on the bechdel test. However, with romantic comedies being slightly bigger than musicals by 0.02, we can deduce that romantic comedies is the genre most likely to pass the bechdel test compared to the other genres.
+
+## Chart 2
+
+```{r, echo = FALSE}
+decades_chart
+```
+
+This line graph is included to display if there is a change in movies’ average Bechdel Test rating over the decades. A line graph was chosen to display the data in order to clearly show if there’s a trend in Bechdel Test rating with movies as time progresses. The main trend seen in the graph is: the higher up the line goes, the higher the average Bechdel Test rating. In this chart, we used data from the 1900s to the present time, 2020s. One interesting point that’s seen is that there’s a weird dip in the 1920s where the average Bechdel Test rating for movies in that decade was a 1, indicating that movies during that time did not represent women very well. Another piece of information is that the average Bechdel Test rating throughout most of the decades shown in this graph is 2, revealing that movies throughout time usually met 2 requirements of the Bechdel Test. Lastly, so far in the present decade (2020s), movies are averaging out to a rating of 3, meaning that movies are meeting mostly all 3 requirements of the Bechdel Test, showing a high inclusion/representation of women in movies.
+
+## Chart 3
+
+```{r, echo = FALSE}
+plot_3
+```
+
+The following bar chart intends to illustrate the relationship between a movie's bechdel test score and the revenue earned by that movie. The chart uses revenue from movies released between 2000-2018 to attempt to account for inflation. Each column in the chart represents all the movies that received the corresponding rating and the y axis displays the average revenue of all of the movies that received each rating. As shown in the table, the highest average revenue was earned by movies that scored a 1 on the bechdel test, earning on average 51.6 million dollars. The movies that scored a 1 earned on average 10 million more dollars than both movies who failed or passed the test. So, as far as we can tell, no linear relationship exists between how much money a movie earns and the bechdel test. In one way, this is good, if movies that scored lower on the bechdel test earned the most, this would indicate either that the public supports movies that do not have meaningful female roles, or simply that meaningful roles are not being supported by large production companies. However, the most desirable result would be that movies that score higher on the bechdel test, have higher average revenues, meaning that the public supports these movies and this is not supported by our analysis. In the future, we hope that more funding will be put behind movies with roles that more accurately portray women and that these films will be supported in the box office, earning more than lower scoring movies.
