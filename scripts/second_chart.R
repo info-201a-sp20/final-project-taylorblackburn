@@ -31,8 +31,8 @@ decades_chart <- ggplot(data = bechdel_df) +
     y = "Bechdel Test Rating"
   ) +
   theme(axis.text.x = element_text(angle = 90),
+        axis.text = element_text(size = 11),
+        axis.title = element_text(size = 14),
+        plot.title = element_text(size = 17),
         panel.border = element_blank(),
-        panel.grid.minor = element_blank()) +
-  theme(axis.text = element_text(size = 11)) +
-  theme(axis.title = element_text(size = 14)) +
-  theme(plot.title = element_text(size = 17))
+        panel.grid.minor = element_blank())
