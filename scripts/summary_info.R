@@ -1,8 +1,10 @@
 library(dplyr)
 
 # Loading our data
-bechdel_rating <- read.csv("./data/bechdel_test_df.csv", stringsAsFactors = FALSE)
-bechdel_revenue <- read.csv("./data/Bechdel-master_revenue.csv", stringsAsFactors = FALSE)
+bechdel_rating <- read.csv("./data/bechdel_test_df.csv",
+                           stringsAsFactors = FALSE)
+bechdel_revenue <- read.csv("./data/Bechdel-master_revenue.csv",
+                            stringsAsFactors = FALSE)
 
 # Merging Data
 rating_select <- bechdel_rating %>%
@@ -11,12 +13,13 @@ rating_select <- bechdel_rating %>%
 revenue_select <- bechdel_revenue %>%
   select(Movie, Revenue, Year, Genre)
 
-merged_data <- left_join(revenue_select, rating_select, by = c("Movie" = "title"))
+merged_data <- left_join(revenue_select, rating_select,
+                         by = c("Movie" = "title"))
 
 bechdel_data <- merged_data %>%
   filter(!is.na(rating))
 
-# 1. Time Frame: Dates of oldest and newest movie 
+# 1. Time Frame: Dates of oldest and newest movie
 oldest_year <- bechdel_data %>%
   filter(Year == min(Year)) %>%
   filter(rating == 3) %>%
@@ -48,4 +51,3 @@ passed_test <- bechdel_data %>%
   filter(rating == 3)
 
 genre_most_common <- tail(names(sort(table(passed_test$Genre))), 1)
-
