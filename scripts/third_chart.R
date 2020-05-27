@@ -1,7 +1,7 @@
 library(ggplot2)
 library(dplyr)
 
-# goal: Create plot that compares bechdel test score to revenue of
+# goal: create plot that compares bechdel test score to revenue the of
 # movies from 2000-2018
 
 # load datsets
@@ -20,16 +20,16 @@ bechdel_select <- bechdel %>%
 # join tibbles
 joined_data <- left_join(rev_select, bechdel_select, by = c("Movie" = "title"))
 
-# Filter out movies with no bechdel score (na values), movies where revenue
+# filter out movies with no bechdel score (na values), movies where revenue
 # is equal to 0, and filter out movies released before 2000 to account
-# for inflation.
+# for inflation
 filtered_data <- joined_data %>%
   filter(!is.na(rating)) %>%
   filter(Revenue > 0) %>%
   filter(Year > 1999)
 
-# Find average revenue of movies with each score (0-3) and scale down
-# revenue to make it easier to understand on the chart.
+# find average revenue of movies with each score (0-3) and scale down
+# revenue to make it easier to understand on the chart
 summary_values <- filtered_data %>%
   group_by(rating) %>%
   summarise(avg_rev = mean(Revenue)) %>%

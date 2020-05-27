@@ -1,4 +1,5 @@
 ```{r setup, include=FALSE}
+<<<<<<< HEAD
 source("scripts/first_chart.R")
 source("scripts/summary_info.R")
 source("scripts/table_summary_info.R")
@@ -7,6 +8,15 @@ source("scripts/third_chart.R")
 ```
 
 # Testing the Bechdel Test
+=======
+source("scripts/second_chart.R")
+
+```
+# Summary Information
+Covid is bad
+# Summary Table
+table
+>>>>>>> 4325c0f897128f23fa8b554cdd94345e61d45118
 
 ## Introductory Paragraph
 
