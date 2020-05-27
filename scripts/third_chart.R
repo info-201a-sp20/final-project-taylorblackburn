@@ -37,7 +37,7 @@ summary_values <- filtered_data %>%
          rev_to_scale = round(rev_to_scale, 1))
 
 # make plot
-ggplot(data = summary_values, aes(x = rating, y = rev_to_scale)) +
+plot_3 <- ggplot(data = summary_values, aes(x = rating, y = rev_to_scale)) +
   geom_bar(stat = "identity", fill = "pink") +
   geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
             size = 8) +
