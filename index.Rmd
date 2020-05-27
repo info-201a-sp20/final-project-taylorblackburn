@@ -1,9 +1,9 @@
 ```{r setup, include=FALSE}
-source("scripts/table_summary_info.R")
+source("scripts/second_chart.R")
+
 ```
 # Summary Information
 Covid is bad
-
 # Summary Table
 table
 

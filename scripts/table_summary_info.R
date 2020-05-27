@@ -3,8 +3,8 @@
 library(dplyr)
 
 # Loading our data
-bechdel_rating <- read.csv("../data/bechdel_test_df.csv", stringsAsFactors = FALSE)
-bechdel_revenue <- read.csv("../data/Bechdel-master_revenue.csv", stringsAsFactors = FALSE)
+bechdel_rating <- read.csv("./data/bechdel_test_df.csv", stringsAsFactors = FALSE)
+bechdel_revenue <- read.csv("./data/Bechdel-master_revenue.csv", stringsAsFactors = FALSE)
 
 # Merging Data
 rating_select <- bechdel_rating %>%
