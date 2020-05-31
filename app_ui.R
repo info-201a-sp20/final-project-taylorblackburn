@@ -1,4 +1,6 @@
 source("page_one.R")
+source("page_two.R")
+source("page_three.R")
 source
 ui <- fluidPage(
   navbarPage(
