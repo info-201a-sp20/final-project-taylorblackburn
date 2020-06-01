@@ -11,6 +11,7 @@ main_panel <- mainPanel(
   plotOutput(
     outputId = "first_chart"
   ),
+  h2("Explanation and Summary"),
   p("These different charts were used to help differentiate the different",
     strong("movie genres and their average bechdel rating"), ". We allow our users to pick",
     "what type of plot they want to see based on their",
@@ -25,7 +26,8 @@ main_panel <- mainPanel(
     "movies are the few genres that are close to receiving an average of 3",
     "on the bechdel test. However, with romantic comedies being slightly",
     "bigger than musicals by 0.02, we can deduce that", strong("romantic comedies"), " is",
-    "the genre most likely to", strong("pass the bechdel test"), "compared to the other genres.")
+    "the genre most likely to", strong("pass the bechdel test"), "compared to the other genres."),
+  img(src = 'romcom.png')
 )
 
 page_one <- tabPanel(
