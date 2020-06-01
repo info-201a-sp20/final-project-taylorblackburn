@@ -4,7 +4,7 @@ library(dplyr)
 # load csv
 bechdel <- read.csv("./data/bechdel_test_df.csv", stringsAsFactors = FALSE)
 revenue <- read.csv("./data/Bechdel-master_revenue.csv",
-  stringsAsFactors = FALSE
+                    stringsAsFactors = FALSE
 )
 
 # Focus on data from 2000 - 2018
@@ -61,9 +61,43 @@ pie_genre <- col_genre +
   ) +
   theme(axis.text.x = element_blank()) +
   geom_text(aes(label = paste(round(average_rating, 2))),
-    position = position_stack(vjust = 0.5)
+            position = position_stack(vjust = 0.5)
   ) +
-  ggtitle("Different Movie Genres and Their Average Bechdel Rating") +
+  ggtitle("Movie Genre's Average Bechdel Rating: Pie Graph") +
+  theme(axis.text = element_text(size = 11)) +
+  theme(axis.title = element_text(size = 14)) +
+  theme(plot.title = element_text(size = 17))
+
+# Bar Graph
+bar_genre <- ggplot(data = average_scale_genre) +
+  geom_col(mapping = aes(Genre, average_rating,
+                         fill = average_rating
+  ), fill = c(
+    "#da7900", "#667eea", "#0038ff",
+    "#ffff00", "#d41a1a", "#06d61a", "#f05f8d",
+    "#045845", "#6b6b6b", "#a97d64", "#FFC0CB"
+  )) +
+  ylab("Average Bechdel Rating (0 - 3)") +
+  xlab("Different Movie Genres") +
+  ggtitle("Movie Genre's Average Bechdel Rating: Bar Graph") +
+  coord_flip() +
+  theme(plot.title = element_text(size = 4, face = "bold")) +
+  theme(axis.text = element_text(size = 11)) +
+  theme(axis.title = element_text(size = 14)) +
+  theme(plot.title = element_text(size = 17))
+
+# Point Graph
+point_genre <- ggplot(data = average_scale_genre) +
+  geom_point(mapping = aes(Genre, average_rating),
+             size = 5, color = c(
+               "#da7900", "#667eea", "#0038ff",
+               "#ffff00", "#d41a1a", "#06d61a", "#f05f8d",
+               "#045845", "#6b6b6b", "#a97d64", "#FFC0CB"
+             )) +
+  xlab("Different Movie Genres") +
+  ylab("Average Bechdel Rating (0 - 3)") +
+  ggtitle("Movie Genre's Average Bechdel Rating: Point Graph") +
+  theme(plot.title = element_text(size = 4, face = "bold")) +
   theme(axis.text = element_text(size = 11)) +
   theme(axis.title = element_text(size = 14)) +
   theme(plot.title = element_text(size = 17))

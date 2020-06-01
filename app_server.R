@@ -1,7 +1,13 @@
+source("./scripts/first_chart.R")
 source("./scripts/second_chart.R")
+source("./scripts/third_chart.R")
+
+library(dplyr)
+library(shiny)
+library(ggplot2)
 
 server <- function(input, output){
-  
+  # Genela's Graph
   output$second_chart <- renderPlot({
     ggplot(data = bechdel_df) +
       geom_line(mapping = aes(x = decade, y = rating_avg),
@@ -22,7 +28,9 @@ server <- function(input, output){
             panel.border = element_blank(),
             panel.grid.minor = element_blank())
   })
-  {output$third_chart <- renderPlot({
+  
+  # Kaisa's Graph
+  output$third_chart <- renderPlot({
     ggplot(data = summary_values, aes(x = rating, y = rev_to_scale)) +
       geom_bar(stat = "identity", fill = "pink") +
       geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
@@ -36,5 +44,15 @@ server <- function(input, output){
       theme(axis.title = element_text(size = 14)) +
       theme(plot.title = element_text(size = 17))
   })
-  }
+  
+  # Danny's Graph
+  output$first_chart <- renderPlot({
+    if(input$plots == "Pie Graph"){
+      pie_genre
+    } else if (input$plots == "Bar Graph"){
+      bar_genre
+    } else if (input$plots == "Point Graph"){
+      point_genre
+    }
+  })
 }
