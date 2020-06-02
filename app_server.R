@@ -26,7 +26,7 @@ server <- function(input, output){
   })
   
   # Kaisa's Graph
-  output$third_chart <- renderPlot({
+  output$third_chart <- renderPlotly({
     if(input$charts == "0"){
       shiny_plot_0
     } else if (input$charts == "1"){

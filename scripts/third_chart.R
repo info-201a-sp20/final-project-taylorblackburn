@@ -33,14 +33,12 @@ filtered_data <- joined_data %>%
 summary_values <- filtered_data %>%
   group_by(rating) %>%
   summarise(avg_rev = mean(Revenue)) %>%
-  mutate(rev_to_scale = avg_rev / 1000000,
-         rev_to_scale = round(rev_to_scale, 1))
+  mutate(revenue = avg_rev / 1000000,
+         revenue = round(revenue, 1))
 
 # make plot
-plot_3 <- ggplot(data = summary_values, aes(x = rating, y = rev_to_scale)) +
+plot_3 <- ggplot(data = summary_values, aes(x = rating, y = revenue)) +
   geom_bar(stat = "identity", fill = "pink") +
-  geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
-            size = 8) +
   theme_minimal() +
   ggtitle("Average Revenue of Movies Released from
           2000-2018 vs Bechdel Test Score") +
@@ -65,60 +63,50 @@ sum3 <- summary_values %>%
 
 # plots for shiny
 
-shiny_plot_0 <- ggplot(data = sum0, aes(x = rating, y = rev_to_scale)) +
+shiny_plot_0 <- ggplot(data = sum0, aes(x = rating, y = revenue)) +
   geom_bar(stat = "identity", fill = "pink") +
-  geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
-            size = 8) +
   theme_minimal() +
   ggtitle("Average Revenue of Movies Released from
           2000-2018 vs Bechdel Test Score") +
   xlab("Bechdel Score = 0") + ylab("Average Revenue (million)") +
   ylim(0, 60) +
   theme(axis.text = element_text(size = 11),
-        axis.title = element_text(size = 14), 
+        axis.title = element_text(size = 14),
         axis.text.x = element_blank(),
         plot.title = element_text(size = 17))
 
-shiny_plot_1 <- ggplot(data = sum1, aes(x = rating, y = rev_to_scale)) +
+shiny_plot_1 <- ggplot(data = sum1, aes(x = rating, y = revenue)) +
   geom_bar(stat = "identity", fill = "pink") +
-  geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
-            size = 8) +
   theme_minimal() +
   ggtitle("Average Revenue of Movies Released from
           2000-2018 vs Bechdel Test Score") +
   xlab("Bechdel Score = 1") + ylab("Average Revenue (million)") +
   ylim(0, 60) +
   theme(axis.text = element_text(size = 11),
-        axis.title = element_text(size = 14), 
+        axis.title = element_text(size = 14),
         axis.text.x = element_blank(),
         plot.title = element_text(size = 17))
 
-shiny_plot_2 <- ggplot(data = sum2, aes(x = rating, y = rev_to_scale)) +
+shiny_plot_2 <- ggplot(data = sum2, aes(x = rating, y = revenue)) +
   geom_bar(stat = "identity", fill = "pink") +
-  geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
-            size = 8) +
   theme_minimal() +
   ggtitle("Average Revenue of Movies Released from
           2000-2018 vs Bechdel Test Score") +
   xlab("Bechdel Score = 2") + ylab("Average Revenue (million)") +
   ylim(0, 60) +
   theme(axis.text = element_text(size = 11),
-        axis.title = element_text(size = 14), 
+        axis.title = element_text(size = 14),
         axis.text.x = element_blank(),
         plot.title = element_text(size = 17))
 
-shiny_plot_3 <- ggplot(data = sum3, aes(x = rating, y = rev_to_scale)) +
+shiny_plot_3 <- ggplot(data = sum3, aes(x = rating, y = revenue)) +
   geom_bar(stat = "identity", fill = "pink") +
-  geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
-            size = 8) +
   theme_minimal() +
   ggtitle("Average Revenue of Movies Released from
           2000-2018 vs Bechdel Test Score") +
   xlab("Bechdel Score = 3") + ylab("Average Revenue (million)") +
   ylim(0, 60) +
   theme(axis.text = element_text(size = 11),
-        axis.title = element_text(size = 14), 
+        axis.title = element_text(size = 14),
         axis.text.x = element_blank(),
         plot.title = element_text(size = 17))
-
-  

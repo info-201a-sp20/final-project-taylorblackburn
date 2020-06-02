@@ -8,7 +8,7 @@ side_panel <- sidebarPanel(id = "sidebar",
 )
 
 main_panel <- mainPanel(
-  plotOutput(
+  plotlyOutput(
     outputId = "third_chart"
   ),
   p("The above bar chart intends to illustrate the",
