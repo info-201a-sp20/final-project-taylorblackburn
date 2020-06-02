@@ -41,6 +41,9 @@ server <- function(input, output){
     else if (input$charts == "3"){
       shiny_plot_3
     }
+    else if (input$charts == "View All Scores"){
+      plot_3
+    }
   })
   
   # Danny's Graph
