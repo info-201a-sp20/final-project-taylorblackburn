@@ -14,7 +14,7 @@ intro_panel <- tabPanel("Project Overview",
   p("Over the past few decades, there have been drastic changes
     in the media to represent various marginalized groups, including
     women, people of color, disabled individuals, and members of
-    the LBTQ+ community. In order to quantify these rising levels of
+    the LGBTQ+ community. In order to quantify these rising levels of
     representation, there have been different processes created to
     assess the diversity of fictional films. We aim to evaluate the
     effectiveness of one of the tools used to measure the character
