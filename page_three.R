@@ -1,6 +1,6 @@
 side_panel <- sidebarPanel(id = "sidebar",
   radioButtons(
-    inputId = "plots",
+    inputId = "charts",
     label = "Select Bechdel Score",
     choices = c("0", "1", "2", "3"),
     selected = "0"

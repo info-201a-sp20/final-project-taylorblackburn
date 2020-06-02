@@ -31,14 +31,14 @@ server <- function(input, output){
   
   # Kaisa's Graph
   output$third_chart <- renderPlot({
-    if(input$plots == "0"){
+    if(input$charts == "0"){
       shiny_plot_0
-    } else if (input$plots == "1"){
+    } else if (input$charts == "1"){
       shiny_plot_1
-    } else if (input$plots == "2"){
+    } else if (input$charts == "2"){
       shiny_plot_2
     }
-    else if (input$plots == "3"){
+    else if (input$charts == "3"){
       shiny_plot_3
     }
   })
