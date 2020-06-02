@@ -2,8 +2,8 @@ side_panel <- sidebarPanel(id = "sidebar",
   radioButtons(
     inputId = "charts",
     label = "Select Bechdel Score",
-    choices = c("View All Scores", "0", "1", "2", "3"),
-    selected = "View All Scores"
+    choices = c("Average Revenue of each Rating", "0", "1", "2", "3"),
+    selected = "Average Revenue of each Rating"
   )
 )
 

@@ -37,7 +37,7 @@ server <- function(input, output){
     else if (input$charts == "3"){
       shiny_plot_3
     }
-    else if (input$charts == "View All Scores"){
+    else if (input$charts == "Average Revenue of each Rating"){
       plot_3
     }
   })
