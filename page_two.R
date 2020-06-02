@@ -1,4 +1,4 @@
-side_panel <- sidebarPanel(
+side_panel <- sidebarPanel(id="sidebar",
   sliderInput(
     inputId = "x_range", 
     label = "Change X Range:",

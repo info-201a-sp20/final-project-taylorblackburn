@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
 
-h1, h2 {
+h1 {
   font-family: 'Satisfy';
-  font-size: 24pt;
+  font-size: 20pt;
   color: #ad0079;
 }
 
 body {
   background-color: #fff2fc;
+}
+
+.sidebarPanel {
+  border-color: #fff;
 }
