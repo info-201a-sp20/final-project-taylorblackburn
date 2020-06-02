@@ -5,7 +5,7 @@ source
 ui <- fluidPage(
   includeCSS("style.css"),
   navbarPage(
-    "TITLE",
+    "Testing the Bechdel Test",
     page_one,
     page_two,
     page_three

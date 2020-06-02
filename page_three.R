@@ -3,6 +3,7 @@ side_panel <- sidebarPanel(
     inputId = "rev_to_scale", 
     label = "Bechdel Score",
     choices = list(0, 1, 2, 3),
+    selected = 0,
     )
 )
 
