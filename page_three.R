@@ -1,4 +1,4 @@
-side_panel <- sidebarPanel(
+side_panel <- sidebarPanel(id="sidebar",
   radioButtons(
     inputId = "rev_to_scale", 
     label = "Bechdel Score",

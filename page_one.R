@@ -1,4 +1,4 @@
-side_panel <- sidebarPanel(
+side_panel <- sidebarPanel(id="sidebar",
   radioButtons(
     inputId = "plots",
     label = "Select what style of plot you want:",
