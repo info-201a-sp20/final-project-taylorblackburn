@@ -10,6 +10,12 @@ body {
   background-color: #fff2fc;
 }
 
-.sidebar {
-  border-color: #fff;
+#nav {
+  color: #000;
+}
+
+#sidebar {
+  border-color: #ad0079;
+  border-width: 3px;
+  box-shadow: 5px 5px 5px black;
 }

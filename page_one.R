@@ -11,7 +11,6 @@ main_panel <- mainPanel(
   plotOutput(
     outputId = "first_chart"
   ),
-  h2("Explanation and Summary"),
   p("These different charts were used to help differentiate the different",
     strong("movie genres and their average bechdel rating"), ". We allow our users to pick",
     "what type of plot they want to see based on their",

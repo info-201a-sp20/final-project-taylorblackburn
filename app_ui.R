@@ -9,7 +9,7 @@ ui <- fluidPage(
   titlePanel(
     h1("Testing the Bechdel Test")
   ),
-  navbarPage(
+  navbarPage(id = "nav",
     "Navigation",
     intro_panel,
     page_one,

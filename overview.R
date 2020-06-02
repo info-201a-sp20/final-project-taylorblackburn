@@ -46,11 +46,13 @@ intro_panel <- tabPanel("Project Overview",
   h1("Questions we hope to answer"),
   p(strong("#1"),
     "What is the correlation between movie genre and the likelihood
-    of passing the Bechdel Test?",
-    strong("#2"),
+    of passing the Bechdel Test?"),
+  p(strong("#2"),
     "How likely is it that a movie will pass the Bechdel test based
     upon the decade that the movie was released?",
     strong("#3"),
+    upon the decade that the movie was released?"),
+  p(strong("#3"),
     "How much revenue will a movie generate if it does or does not
     pass the Bechdel Test?"),
 # "Visual flare"

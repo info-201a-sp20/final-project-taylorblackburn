@@ -31,18 +31,16 @@ server <- function(input, output){
   
   # Kaisa's Graph
   output$third_chart <- renderPlot({
-    ggplot(data = summary_values, aes(x = rating, y = rev_to_scale)) +
-      geom_bar(stat = "identity", fill = "pink") +
-      geom_text(aes(label = rev_to_scale), vjust = 1.6, color = "white",
-                size = 8) +
-      theme_minimal() +
-      ggtitle("Average Revenue of Movies Released from
-          2000-2018 vs Bechdel Test Score") +
-      xlab("Bechdel Score") + ylab("Average Revenue (million)") +
-      ylim(0, 60) +
-      theme(axis.text = element_text(size = 11)) +
-      theme(axis.title = element_text(size = 14)) +
-      theme(plot.title = element_text(size = 17))
+    if(input$charts == "0"){
+      shiny_plot_0
+    } else if (input$charts == "1"){
+      shiny_plot_1
+    } else if (input$charts == "2"){
+      shiny_plot_2
+    }
+    else if (input$charts == "3"){
+      shiny_plot_3
+    }
   })
   
   # Danny's Graph

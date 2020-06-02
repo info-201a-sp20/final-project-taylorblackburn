@@ -1,10 +1,10 @@
-side_panel <- sidebarPanel(id="sidebar",
+side_panel <- sidebarPanel(id = "sidebar",
   radioButtons(
-    inputId = "rev_to_scale", 
-    label = "Bechdel Score",
-    choices = list(0, 1, 2, 3),
-    selected = 0,
-    )
+    inputId = "charts",
+    label = "Select Bechdel Score",
+    choices = c("0", "1", "2", "3"),
+    selected = "0"
+  )
 )
 
 main_panel <- mainPanel(
