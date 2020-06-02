@@ -10,15 +10,15 @@ bechdel_revenue <- read.csv("./data/Bechdel-master_revenue.csv",
                             stringsAsFactors = FALSE)
 
 # Summary Takeaway #1 Background
-
 oldest_pass <- bechdel_rating %>%
   filter(rating == 3) %>%
   filter(year == min(year)) %>%
   pull(title)
 
+# Summary Takeaway #2 
+
+
 # Creating the conclusion page
-
-
 summary_takeaways <- tabPanel("Summary Takeaways",
   h1("Takeaway #1"),
   p("One noteable observation that was gathered from our project was
