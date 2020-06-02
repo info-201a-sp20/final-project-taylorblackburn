@@ -9,7 +9,6 @@ bechdel_revenue <- read.csv("./data/Bechdel-master_revenue.csv",
                             stringsAsFactors = FALSE)
 # Creating the first page
 intro_panel <- tabPanel("Project Overview",
-  titlePanel("Testing the Bechdel Test"),
 # The purpose/importance of our project
   p("Over the past few decades, there have been drastic changes
     in the media to represent various marginalized groups, including
