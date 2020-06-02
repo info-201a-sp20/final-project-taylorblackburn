@@ -9,7 +9,7 @@ side_panel <- sidebarPanel(id="sidebar",
 )
 
 main_panel <- mainPanel(
-  plotOutput(
+  plotlyOutput(
     outputId = "second_chart"
   ),
   p("This line graph is included to display if there", 

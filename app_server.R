@@ -2,13 +2,9 @@ source("./scripts/first_chart.R")
 source("./scripts/second_chart.R")
 source("./scripts/third_chart.R")
 
-library(dplyr)
-library(shiny)
-library(ggplot2)
-
 server <- function(input, output){
   # Genela's Graph
-  output$second_chart <- renderPlot({
+  output$second_chart <- renderPlotly({
     ggplot(data = bechdel_df) +
       geom_line(mapping = aes(x = decade, y = rating_avg),
                 color = "cornflowerblue") +
