@@ -40,27 +40,31 @@ average_scale_genre <- combined_movies %>%
 
 # Pie with plotly
 pie_genre <- plot_ly(average_scale_genre,
-                     labels = ~Genre, 
-                     values = ~round(average_rating,2), 
-                     type = 'pie',
-                     textinfo = 'label+percent',
+                     labels = ~Genre,
+                     values = ~round(average_rating, 2),
+                     type = "pie",
+                     textinfo = "label+percent",
                      marker = list(colors = c(
                        "#da7900", "#667eea", "#0038ff",
                        "#ffff00", "#d41a1a", "#06d61a", "#f05f8d",
                        "#045845", "#6b6b6b", "#a97d64", "#FFC0CB"
                      )),
-                     insidetextfont = list(color = '#000000')
-) %>% 
+                     insidetextfont = list(color = "#000000")
+) %>%
   layout(title = "<b>Movie Genre's Average Bechdel Rating: Pie Graph</b>",
-         font = list(color = '#000000'),
-         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
-         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE)
+         font = list(color = "#000000"),
+         xaxis = list(showgrid = FALSE,
+                      zeroline = FALSE,
+                      showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE,
+                      zeroline = FALSE,
+                      showticklabels = FALSE)
   )
 
 # Bar Graph with plotly
 bar_genre <- plot_ly(average_scale_genre,
-                     x = ~Genre, 
-                     y = ~round(average_rating, 2), 
+                     x = ~Genre,
+                     y = ~round(average_rating, 2),
                      name = "Genre",
                      type = "bar",
                      marker = list(color = c(
@@ -68,10 +72,10 @@ bar_genre <- plot_ly(average_scale_genre,
                        "#ffff00", "#d41a1a", "#06d61a", "#f05f8d",
                        "#045845", "#6b6b6b", "#a97d64", "#FFC0CB"
                      )),
-                     insidetextfont = list(color = '#000000')
-) %>% 
+                     insidetextfont = list(color = "#000000")
+) %>%
   layout(title = "<b>Movie Genre's Average Bechdel Rating: Bar Graph</b>",
-         font = list(color = '#000000'),
+         font = list(color = "#000000"),
          xaxis = list(title = "Different Movie Genres"),
          yaxis = list(title = "Average Rating (0-3)"))
 
@@ -79,7 +83,8 @@ bar_genre <- plot_ly(average_scale_genre,
 point_genre <- ggplot(data = average_scale_genre,
                       aes(Genre, average_rating,
                           text = paste("Genre: ", Genre,
-                                       "<br>Average Rating: ", round(average_rating, 2)))) +
+                                       "<br>Average Rating: ",
+                                       round(average_rating, 2)))) +
   geom_point(mapping = aes(Genre, average_rating),
              size = 5,
              color = c(
