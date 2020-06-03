@@ -49,7 +49,7 @@ most_revenue <- bechdel_data %>%
 summary_takeaways <- tabPanel("Summary Takeaways",
   h1("Takeaway #1"),
   p("One noteable observation that we gathered from our project was the
-    abilitiy to not to judge a movie based upon its stereotype, particularly
+    abilitiy to not judge a movie based upon its stereotype, particularly
     pertaining towards gender. For example,", strong(oldest_pass),
     "was the oldest movie from our merged dataset to pass the Bechdel test.
     When a person thinks of Disney princess movies, they do not automatically
@@ -63,8 +63,8 @@ summary_takeaways <- tabPanel("Summary Takeaways",
   have a higher Bechdel rating as time went on (as shown in",
   em("The Bechdel Test across Decades"),
   "tab.) This allows us to think about what real-world factors
-  occuring in that particular decade that could
-  have caused progressive changes in the the fictional world of film
+  occurring in that particular decade could
+  have caused progressive changes in the fictional world of film
   and developing the inclusivity of women. They are now
   recognized as important characters and necessary for plot development."),
   h1("Takeaway #3"),
@@ -84,7 +84,7 @@ summary_takeaways <- tabPanel("Summary Takeaways",
     feminist litmus test. Films that do not pass may still dispel gender
     stereotypes that exist outside conventional and outdated storylines.
     On the other hand, some films that pass may involve an insignificant
-    conversation between two women. And while the Bechdel Test is perhaps
+    conversation between two women. Also, while the Bechdel Test is perhaps
     the most well-known test, this gives motivation to explore other metrics
     that also aim to measure inclusivity in film. The combination of these tests
     give rise to address stereotypes against race, ethnicity, and gender
