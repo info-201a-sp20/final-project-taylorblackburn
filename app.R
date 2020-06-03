@@ -2,6 +2,8 @@ library(dplyr)
 library(shiny)
 library(ggplot2)
 library(plotly)
+library(rsconnect)
+library(packrat)
 
 source("app_ui.R")
 source("app_server.R")
