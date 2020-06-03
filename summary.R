@@ -73,20 +73,23 @@ summary_takeaways <- tabPanel("Summary Takeaways",
     the Bechdel Test. After doing some data analysis (as shown in",
     em("Average Revenue of Movies Released from 2000-2018 vs Bechdel
        Test Score"), "tab), it was valuable to observe that movies that scored
-    a (1) on the Bechdel Test (didn't pass), generated the most revenue on average.
-    This is englightening as it shows the variety of other factors that could
+    a (1) on the Bechdel Test (didn't pass), generated the most
+    revenue on average. This is englightening as it shows
+    the variety of other factors that could
     have directed a movie's success upon its release. For example,",
     strong(most_revenue), "was a relevant and powerful movie that narrarated
     a widely-know catastrophe. Its success did not derive from its stance on
     women empowerment, rather its sheer popularity amongst a wide variety of
-    people. Also, this data displayed that the Bechdel Test is a basic measure of
-    a film's ability for including women in fictional media; it is not a perfect
-    feminist litmus test. Films that do not pass may still dispel gender
-    stereotypes that exist outside conventional and outdated storylines.
-    On the other hand, some films that pass may involve an insignificant
-    conversation between two women. Also, while the Bechdel Test is perhaps
-    the most well-known test, this gives motivation to explore other metrics
-    that also aim to measure inclusivity in film. The combination of these tests
+    people. Also, this data displayed that the Bechdel Test is a
+    basic measure of a film's ability for including women
+    in fictional media; it is not a perfect
+    feminist litmus test. Films that do not pass may still dispel
+    gender stereotypes that exist outside conventional and
+    outdated storylines. On the other hand, some films that pass
+    may involve an insignificant conversation between two women. Also,
+    while the Bechdel Test is perhaps the most well-known test, this
+    gives motivation to explore other metrics that also aim to
+    measure inclusivity in film. The combination of these tests
     give rise to address stereotypes against race, ethnicity, and gender
     and begin debunking them.")
 )
