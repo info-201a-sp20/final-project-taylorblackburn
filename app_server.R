@@ -6,9 +6,9 @@ server <- function(input, output){
   # Genela's Graph
   output$second_chart <- renderPlotly({
     ggplot(data = bechdel_df) +
-      geom_line(mapping = aes(x = decade, y = rating_avg),
+      geom_line(mapping = aes(x = decade, y = rating),
                 color = "cornflowerblue") +
-      geom_point(mapping = aes(x = decade, y = rating_avg),
+      geom_point(mapping = aes(x = decade, y = rating),
                  color = "cornflowerblue") +
       scale_x_continuous(breaks = bechdel_df$decade) +
       xlim(input$x_range[1], input$x_range[2]) +

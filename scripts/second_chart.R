@@ -16,7 +16,8 @@ bechdel_df <- bechdel %>%
   group_by(decade) %>%
   summarize(
     rating_avg = round(mean(rating), 0)
-  )
+  ) %>% 
+  rename(rating = "rating_avg")
 
 #create bar chart
 decades_chart <- ggplot(data = bechdel_df) +
