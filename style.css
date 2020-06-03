@@ -6,6 +6,11 @@ h1 {
   color: #ad0079;
 }
 
+p {
+  margin: 25px 20px 25px;
+  line-height: 1.7;
+}
+
 body {
   background-color: #fff2fc;
 }
