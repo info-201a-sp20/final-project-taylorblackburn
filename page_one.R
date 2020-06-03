@@ -8,7 +8,7 @@ side_panel <- sidebarPanel(id="sidebar",
 )
 
 main_panel <- mainPanel(
-  plotOutput(
+  plotlyOutput(
     outputId = "first_chart"
   ),
   p("These different charts were used to help differentiate the different",

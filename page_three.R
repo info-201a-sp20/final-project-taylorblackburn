@@ -2,24 +2,23 @@ side_panel <- sidebarPanel(id = "sidebar",
   radioButtons(
     inputId = "charts",
     label = "Select Bechdel Score",
-    choices = c("View All Scores", "0", "1", "2", "3"),
-    selected = "View All Scores"
+    choices = c("Average Revenue of each Rating", "0", "1", "2", "3"),
+    selected = "Average Revenue of each Rating"
   )
 )
 
 main_panel <- mainPanel(
-  plotOutput(
+  plotlyOutput(
     outputId = "third_chart"
   ),
-  p("The above bar chart intends to illustrate the",
-    "relationship between a movie's bechdel test score and",
+  p("The charts shown above intend to investigate whether there",
+    "is any relationship between a movie's bechdel test score and",
     "the revenue earned by that movie. The chart uses revenue",
     "from movies released between 2000-2018 to attempt to",
-    "account for inflation. Each column in the chart",
+    "account for inflation. In the bar chart, each column",
     "represents all the movies that received the corresponding",
     "rating and the y axis displays the average revenue of all",
-    "of the movies that received each rating. As shown in the",
-    "table, the highest average revenue was earned by movies",
+    "of those movies. The highest average revenue was earned by movies",
     "that scored a 1 on the bechdel test, earning on average",
     "51.6 million dollars. The movies that scored a 1 earned",
     "on average 10 million more dollars than both movies who",

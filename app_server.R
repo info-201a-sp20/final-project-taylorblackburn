@@ -2,13 +2,9 @@ source("./scripts/first_chart.R")
 source("./scripts/second_chart.R")
 source("./scripts/third_chart.R")
 
-library(dplyr)
-library(shiny)
-library(ggplot2)
-
 server <- function(input, output){
   # Genela's Graph
-  output$second_chart <- renderPlot({
+  output$second_chart <- renderPlotly({
     ggplot(data = bechdel_df) +
       geom_line(mapping = aes(x = decade, y = rating_avg),
                 color = "cornflowerblue") +
@@ -30,7 +26,7 @@ server <- function(input, output){
   })
   
   # Kaisa's Graph
-  output$third_chart <- renderPlot({
+  output$third_chart <- renderPlotly({
     if(input$charts == "0"){
       shiny_plot_0
     } else if (input$charts == "1"){
@@ -41,13 +37,13 @@ server <- function(input, output){
     else if (input$charts == "3"){
       shiny_plot_3
     }
-    else if (input$charts == "View All Scores"){
+    else if (input$charts == "Average Revenue of each Rating"){
       plot_3
     }
   })
   
   # Danny's Graph
-  output$first_chart <- renderPlot({
+  output$first_chart <- renderPlotly({
     if(input$plots == "Pie Graph"){
       pie_genre
     } else if (input$plots == "Bar Graph"){
