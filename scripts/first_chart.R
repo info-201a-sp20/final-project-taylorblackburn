@@ -76,9 +76,13 @@ bar_genre <- plot_ly(average_scale_genre,
          yaxis = list(title = "Average Rating (0-3)"))
 
 # Point Graph with ggplot
-point_genre <- ggplot(data = average_scale_genre) +
+point_genre <- ggplot(data = average_scale_genre,
+                      aes(Genre, average_rating,
+                          text = paste("Genre: ", Genre,
+                                       "<br>Average Rating: ", round(average_rating, 2)))) +
   geom_point(mapping = aes(Genre, average_rating),
-             size = 5, color = c(
+             size = 5,
+             color = c(
                "#da7900", "#667eea", "#0038ff",
                "#ffff00", "#d41a1a", "#06d61a", "#f05f8d",
                "#045845", "#6b6b6b", "#a97d64", "#FFC0CB"
@@ -88,4 +92,7 @@ point_genre <- ggplot(data = average_scale_genre) +
   ggtitle("Movie Genre's Average Bechdel Rating: Point Graph") +
   theme(plot.title = element_text(size = 12, face = "bold", hjust = 0.5, color = "#000000")) +
   theme(axis.text = element_text(size = 11)) +
-  theme(axis.title = element_text(size = 11))
+  theme(axis.title = element_text(size = 11)) +
+  theme(axis.text.x = element_text(angle = -45))
+
+point_genre <- ggplotly(point_genre, tooltip = "text")
