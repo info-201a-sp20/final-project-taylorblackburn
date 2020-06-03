@@ -2,7 +2,7 @@ source("./scripts/first_chart.R")
 source("./scripts/second_chart.R")
 source("./scripts/third_chart.R")
 
-server <- function(input, output){
+server <- function(input, output) {
   # Genela's Graph
   output$second_chart <- renderPlotly({
     ggplot(data = bechdel_df) +
@@ -24,31 +24,31 @@ server <- function(input, output){
             panel.border = element_blank(),
             panel.grid.minor = element_blank())
   })
-  
+
   # Kaisa's Graph
   output$third_chart <- renderPlotly({
-    if(input$charts == "0"){
+    if (input$charts == "0") {
       shiny_plot_0
-    } else if (input$charts == "1"){
+    } else if (input$charts == "1") {
       shiny_plot_1
-    } else if (input$charts == "2"){
+    } else if (input$charts == "2") {
       shiny_plot_2
     }
-    else if (input$charts == "3"){
+    else if (input$charts == "3") {
       shiny_plot_3
     }
-    else if (input$charts == "Average Revenue of each Rating"){
+    else if (input$charts == "Average Revenue of each Rating") {
       plot_3
     }
   })
-  
+
   # Danny's Graph
   output$first_chart <- renderPlotly({
-    if(input$plots == "Pie Graph"){
+    if (input$plots == "Pie Graph") {
       pie_genre
-    } else if (input$plots == "Bar Graph"){
+    } else if (input$plots == "Bar Graph") {
       bar_genre
-    } else if (input$plots == "Point Graph"){
+    } else if (input$plots == "Point Graph") {
       point_genre
     }
   })
