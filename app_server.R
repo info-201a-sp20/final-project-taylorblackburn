@@ -43,7 +43,7 @@ server <- function(input, output){
   })
   
   # Danny's Graph
-  output$first_chart <- renderPlot({
+  output$first_chart <- renderPlotly({
     if(input$plots == "Pie Graph"){
       pie_genre
     } else if (input$plots == "Bar Graph"){
