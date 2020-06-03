@@ -19,7 +19,7 @@ main_panel <- mainPanel(
     "represents all the movies that received the corresponding",
     "rating and the y axis displays the average revenue of all",
     "of those movies. The highest average revenue was earned by movies",
-    "that scored a 1 on the bechdel test, earning on average",
+    "that scored a 1 on the bechdel test (failing the test), earning on average",
     "51.6 million dollars. The movies that scored a 1 earned",
     "on average 10 million more dollars than both movies who",
     "failed or passed the test. So, as far as we can tell, no",
