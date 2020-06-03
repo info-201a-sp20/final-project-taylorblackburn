@@ -40,8 +40,7 @@ main_panel <- mainPanel(
 )
 
 page_three <- tabPanel(
-  "Average Revenue of Movies Released from
-          2000-2018 vs Bechdel Test Score",
+  "Revenue vs Bechdel Test Score",
   sidebarLayout(
     side_panel,
     main_panel
